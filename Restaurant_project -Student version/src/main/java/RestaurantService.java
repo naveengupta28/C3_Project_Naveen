@@ -36,8 +36,20 @@ public class RestaurantService {
         return restaurants;
     }
 
-    public int selectedFoodItem(List<String> itemName){
 
-        return 0;
+    public int selectedFoodItem(List<String> itemName){
+        List<Item> addItem=new ArrayList<Item>();
+        for(int i=0;i<itemName.size();i++){
+            addItem.add(restaurant.findItemByName(itemName.get(i)));
+        }
+        int totalPrice=calculateTotalPrice(addItem);
+        return totalPrice;
+    }
+    public int calculateTotalPrice(List<Item> addItem){
+        int price=0;
+        for (Item item:addItem) {
+            price=price+item.getPrice();
+        }
+        return price;
     }
 }
