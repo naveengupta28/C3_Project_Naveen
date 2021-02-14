@@ -64,5 +64,15 @@ class RestaurantServiceTest {
     }
 
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void when_two_items_are_added_of_price_269_and_130_respectively_the_total_price_should_be_399() {
+        RestaurantService restaurantService=new RestaurantService(restaurant);
+        List<String> ItemName=new ArrayList<String>();
+        ItemName.add("Vegetable lasagne");
+        ItemName.add("Mozarella cheese pasta");
+        //SelectedFoodItem method takes List of ItemName and returns total Price
+        int totalPriceItem = restaurantService.selectedFoodItem(ItemName);
+        assertEquals(399, totalPriceItem);
+    }
 
 }
